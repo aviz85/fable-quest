@@ -22,7 +22,7 @@
 
 ## 🎮 איך משחקים
 
-**▶️ לשחק עכשיו: https://aviz85.github.io/fable-quest/**
+**▶️ לשחק עכשיו: https://fable-quest-seven.vercel.app**
 
 או מקומית:
 
@@ -110,7 +110,7 @@ Enter **Yankale Serberman, 54**, part-time janitor at "Internet Café Shuki 2000
 
 ## How to Play
 
-**▶️ PLAY: https://aviz85.github.io/fable-quest/**
+**▶️ PLAY: https://fable-quest-seven.vercel.app**
 
 Or locally:
 
