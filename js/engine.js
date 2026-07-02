@@ -85,19 +85,20 @@ function enterRoom(roomId, heroX) {
   saveGame('auto');
 }
 
-// ── Render loop (10 fps, Sierra pace) ───────────────────────
+// ── Render loop (~15 fps, Sierra pace but not Sierra patience) ──
+const WALK_SPEED = 5; // px per tick
 function tick() {
   frame++;
   state.hero.frame = state.hero.tx !== null ? frame : 0;
   // hero walking
   if (state.hero.tx !== null && !state.dead) {
     const dx = state.hero.tx - state.hero.x;
-    if (Math.abs(dx) <= 2) { state.hero.tx = null; }
-    else { state.hero.x += Math.sign(dx) * 2; state.hero.dir = Math.sign(dx); }
+    if (Math.abs(dx) <= WALK_SPEED) { state.hero.x = state.hero.tx; state.hero.tx = null; }
+    else { state.hero.x += Math.sign(dx) * WALK_SPEED; state.hero.dir = Math.sign(dx); }
     checkEdges();
   }
   draw();
-  setTimeout(tick, 100);
+  setTimeout(tick, 66);
 }
 
 function checkEdges() {
@@ -346,10 +347,10 @@ document.addEventListener('keydown', e => {
   if (state.dead || state.won) return;
   if (document.activeElement === input && e.key !== 'ArrowLeft' && e.key !== 'ArrowRight') return;
   const floor = currentScene && currentScene.floor || { y1: 150, y2: 192 };
-  if (e.key === 'ArrowLeft') { state.hero.tx = Math.max(0, state.hero.x - 24); e.preventDefault(); }
-  if (e.key === 'ArrowRight') { state.hero.tx = Math.min(320, state.hero.x + 24); e.preventDefault(); }
-  if (e.key === 'ArrowUp') { state.hero.y = Math.max(floor.y1, state.hero.y - 6); e.preventDefault(); }
-  if (e.key === 'ArrowDown') { state.hero.y = Math.min(floor.y2, state.hero.y + 6); e.preventDefault(); }
+  if (e.key === 'ArrowLeft') { state.hero.tx = Math.max(0, (state.hero.tx ?? state.hero.x) - 44); e.preventDefault(); }
+  if (e.key === 'ArrowRight') { state.hero.tx = Math.min(320, (state.hero.tx ?? state.hero.x) + 44); e.preventDefault(); }
+  if (e.key === 'ArrowUp') { state.hero.y = Math.max(floor.y1, state.hero.y - 10); e.preventDefault(); }
+  if (e.key === 'ArrowDown') { state.hero.y = Math.min(floor.y2, state.hero.y + 10); e.preventDefault(); }
   if (e.key === 'm' || e.key === 'M') { const on = toggleMusic(); api.say(on ? 'מוזיקה: פועלת' : 'מוזיקה: כבויה'); if (on && currentScene.music) playTrack(currentScene.music); }
 });
 canvas.addEventListener('click', e => {
