@@ -1,0 +1,14 @@
+# build/render output
+out/
+node_modules/
+
+# OS / editors
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# local agent/project memory — not for the public repo
+.wolf/
+.claude/
+CLAUDE.md

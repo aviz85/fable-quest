@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FABLE QUEST</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div id="game">
+  <div id="statusbar">
+    <span id="room-name"></span>
+    <span id="score"></span>
+  </div>
+  <div id="screen-wrap">
+    <canvas id="screen" width="320" height="200"></canvas>
+    <div id="title-screen">
+      <div id="title-inner">
+        <div id="title-name">FABLE QUEST</div>
+        <div id="title-sub">הרפתקה בסגנון סיירה · 1989 · בצבעי EGA מרהיבים</div>
+        <div id="title-hint">לחץ בכל מקום כדי להתחיל</div>
+      </div>
+    </div>
+    <div id="msgbox"><div id="msgtext"></div><div class="msg-hint">[ לחץ או Enter להמשך ]</div></div>
+    <div id="deathbox" class="modal">
+      <div class="modal-inner">
+        <div class="skull">☠</div>
+        <div id="deathtext"></div>
+        <div class="modal-btns">
+          <button id="btn-restore">שחזר</button>
+          <button id="btn-restart">התחל מחדש</button>
+        </div>
+      </div>
+    </div>
+    <div id="winbox" class="modal">
+      <div class="modal-inner win">
+        <div class="trophy">🏆</div>
+        <div id="wintext"></div>
+        <div id="winscore"></div>
+      </div>
+    </div>
+  </div>
+  <div id="inventory"></div>
+  <div id="cmdline">
+    <span class="prompt">&gt;</span>
+    <input id="cmd" type="text" autocomplete="off" placeholder="מה תעשה? (למשל: הסתכל / קח מפתח / דבר עם רובוט)">
+  </div>
+  <div id="footer">חצים = תזוזה · M = מוזיקה · "עזרה" = עזרה · תשמור. באמת. זה משחק סיירה.</div>
+</div>
+<script type="module" src="js/engine.js"></script>
+</body>
+</html>
